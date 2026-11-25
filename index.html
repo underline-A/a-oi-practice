@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <title>___A__OI</title>
+  <link rel="icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./vendor/katex.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./home.css">
+  <link rel="stylesheet" href="./library.css">
+  <link rel="stylesheet" href="./submit.css">
+  <link rel="stylesheet" href="./record.css">
+  <link rel="stylesheet" href="./visitor.css">
+  <script defer src="./vendor/marked.umd.js"></script>
+  <script defer src="./vendor/katex.min.js"></script>
+  <script defer src="./vendor/purify.min.js"></script>
+  <script defer src="./typeset.js"></script>
+  <script defer src="./library.js"></script>
+  <script defer src="./visitor.js"></script>
+</head>
+<body>
+  <template id="profile">
+    <span class="oj-profile">
+      <img class="oj-profile-photo" src="./avatar.jpg" width="35" height="35" alt="">
+      <span class="oj-profile-nameplate"><span class="oj-profile-name">___A__</span><i class="oj-gold-check" aria-hidden="true"></i><i class="oj-gold-balloon" aria-hidden="true"></i></span>
+    </span>
+  </template>
+  <header class="top">
+    <a class="brand" href="#home" aria-label="___A__OI 首页"><span aria-hidden="true">A</span></a>
+    <nav class="breadcrumbs" id="breadcrumbs" aria-label="当前位置"><a href="#home">___A__OI</a></nav>
+    <details class="personal" id="personal-menu">
+      <summary aria-label="___A__ 的个人菜单"><img class="oj-profile-photo" src="./avatar.jpg" width="35" height="35" alt=""></summary>
+      <nav aria-label="个人菜单"><span class="account-title"></span><a href="#records">评测记录</a></nav>
+    </details>
+  </header>
+  <nav class="rail" aria-label="主导航">
+    <a href="#home" aria-label="首页"><i class="glyph house" aria-hidden="true"></i><span>首页</span></a>
+    <a href="#library" aria-label="题库"><i class="glyph book" aria-hidden="true"></i><span>题库</span></a>
+    <a href="#records" aria-label="评测记录"><i class="glyph chart" aria-hidden="true"></i><span>评测记录</span></a>
+  </nav>
+  <div class="workspace"><main class="wrap" id="workbench">
+    <noscript><p class="notice">请启用 JavaScript 以浏览题库和评测记录。</p></noscript>
+    <p id="notice" role="status" class="loading">正在读取…</p>
+    <section id="home-page" hidden>
+      <h1 class="home-quote"><span>假如我不去摘星星的话，</span><span>我怎么能知道自己能靠得多近？</span></h1>
+    </section>
+    <section id="library-page" hidden aria-label="题库"></section>
+    <section id="records-page" hidden aria-label="评测记录"></section>
+    <section id="practice" hidden aria-label="题目详情">
+      <header class="masthead">
+        <div class="mast-top"><h1><span id="problem-id"></span> <span id="problem-title"></span></h1>
+          <dl class="stats"><div><dt>提交</dt><dd id="submit-count"></dd></div><div><dt>通过</dt><dd id="ac-count"></dd></div><div><dt>时间限制</dt><dd id="time-limit"></dd></div><div><dt>内存限制</dt><dd id="memory-limit"></dd></div></dl>
+        </div>
+        <div class="mast-actions"><nav class="page-tabs" aria-label="本题导航"><a id="tab-statement" data-active aria-current="page">题目描述</a></nav></div>
+      </header>
+      <div class="columns"><div class="main-card"><article id="panel-statement" class="paper tab-content">
+        <div id="statement"></div>
+        <section id="samples-section" hidden><h2>输入输出样例</h2><div id="samples"></div></section>
+      </article></div>
+      <aside class="side" aria-label="题目资料">
+        <section class="aside-card"><dl class="fact-list"><div><dt>题目编号</dt><dd id="sidebar-id"></dd></div><div><dt>历史分数</dt><dd id="problem-progress"></dd></div></dl>
+          <div class="problem-links"><a id="history-button"><i class="glyph pie" aria-hidden="true"></i>提交记录</a><a id="show-review" target="_blank" rel="noopener noreferrer"><i class="glyph book" aria-hidden="true"></i>查看题解</a></div>
+        </section>
+        <section id="source-section" class="aside-card" hidden><h2>原题出处</h2><div id="source-link"></div></section>
+      </aside></div>
+    </section>
+    <section id="record-page" hidden aria-label="记录详情"></section>
+    <section id="solution-page" hidden aria-label="题解"><article class="main-card solution-paper">
+      <header class="solution-heading"><h1 id="solution-title"></h1><a id="solution-back">返回题目</a></header>
+      <div id="solution-body"></div>
+    </article></section>
+  </main></div>
+  <dialog id="case-detail" aria-labelledby="case-title">
+    <header><h2 id="case-title"></h2><form method="dialog"><button aria-label="关闭">×</button></form></header>
+    <dl class="case-detail-facts"></dl>
+    <pre id="case-detail-message" hidden></pre>
+  </dialog>
+</body>
+</html>

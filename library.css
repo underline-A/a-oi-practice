@@ -1,0 +1,120 @@
+#library-page .library-filter {
+  padding: 20px;
+  margin-bottom: 20px;
+  color: var(--body);
+  background: var(--paper);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px #25395225;
+}
+.library-fields, .library-field, .library-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.library-fields { gap: 16px 24px; }
+.library-field { gap: 10px; font-size: 14px; }
+.library-field select, .library-field input {
+  height: 33px;
+  padding: 0 10px;
+  color: var(--body);
+  border: 1px solid #d3d9de;
+  background: #fff;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.library-field select { min-width: 135px; }
+.library-field input { width: 256px; max-width: 100%; }
+.library-field input:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.library-field input::placeholder { color: #83888b; }
+.library-tools { margin-top: 18px; gap: 12px; }
+.library-count { margin-right: auto; color: var(--mute); font-variant-numeric: tabular-nums; }
+.library-clear, .library-search { font-size: 14px; }
+.library-search {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 15px;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  background: #3498db;
+}
+.library-search:hover { background: var(--blue-dark); }
+.library-search::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  margin: -2px 0 0;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+.library-search { position: relative; }
+.library-search::after {
+  content: '';
+  position: absolute;
+  top: calc(50% + 3px);
+  left: 25px;
+  width: 5px;
+  height: 1.5px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+#library-page .library-sheet { padding: 20px 20px 0; overflow: hidden; }
+#library-page .library-table { width: 100%; border-collapse: collapse; font-size: 16px; }
+#library-page .library-table th, #library-page .library-table td {
+  padding: 9px 10px;
+  height: 42px;
+  text-align: left;
+  background: transparent;
+  border-bottom: 1px solid #aeb8bf38;
+}
+#library-page .library-table th { font-size: 14px; font-weight: 500; }
+#library-page .library-table th:first-child, #library-page .library-table td:first-child {
+  width: 36px;
+  padding: 8px 3px;
+  text-align: center;
+}
+#library-page .library-table th:nth-child(2), #library-page .library-table td:nth-child(2) { width: 96px; }
+#library-page .library-table tbody tr:hover { background: #3498db09; }
+#library-page .library-state {
+  padding: 0; border: 0; background: none; color: #777d80;
+  font: 500 17px/1 system-ui, sans-serif;
+}
+#library-page .library-state.is-solved { color: #52a932; font-weight: 700; }
+#library-page .library-number { color: var(--ink); font-variant-numeric: tabular-nums; font-size: inherit; }
+#library-page .library-name { font-weight: 500; }
+.library-sort { display: inline-flex; gap: 5px; align-items: center; color: var(--body); }
+.library-sort-mark { display: inline-flex; flex-direction: column; gap: 2px; }
+.library-sort-mark::before, .library-sort-mark::after {
+  content: '';
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+.library-sort-mark::before { border-bottom: 4px solid #c1c6c9; }
+.library-sort-mark::after { border-top: 4px solid #c1c6c9; }
+.library-table [aria-sort=ascending] .library-sort-mark::before { border-bottom-color: #73838c; }
+.library-table [aria-sort=descending] .library-sort-mark::after { border-top-color: #73838c; }
+.library-pager {
+  padding: 10px 20px;
+  margin: -1px -20px 0;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+  background: #ffffff66;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.library-pager > span:first-child { margin-right: 6px; }
+.library-page-link {
+  height: 25px; min-width: 25px;
+  display: inline-grid; place-items: center;
+  border-radius: 4px;
+  color: var(--body);
+  border: 1px solid #d3dade;
+  background: #fff;
+}
+.library-page-link[aria-current], .library-page-link:hover { color: #fff; background: #3498db; border-color: #3498db; text-decoration: none; }
+.library-page-gap { color: var(--mute); }
+.library-empty { padding: 34px 10px 40px; text-align: center; color: var(--mute); }

@@ -1,0 +1,36 @@
+.workspace::before {
+  background-image: linear-gradient(110deg, rgb(250 248 244 / 53%), rgb(250 248 244 / 42%)), url("./link-wallpaper.webp");
+}
+.workspace:has(#home-page:not([hidden]))::before {
+  background-image: radial-gradient(ellipse 62% 39% at 50% 55%, rgb(9 17 25 / 38%), transparent 80%), url("./link-wallpaper.webp");
+}
+.guest-err { display: grid; gap: 14px; justify-items: start; padding: 24px; }
+@media (max-width: 850px) {
+  #records-page .record-row { grid-template-columns: 125px 105px minmax(100px,1fr); gap: 4px 8px; padding: 10px 0; }
+  #records-page .record-metrics { grid-column: 3; }
+  #records-page .record-metrics .metric-line { flex-wrap: wrap; }
+  .columns { grid-template-columns: 1fr; }
+  .mast-top { flex-wrap: wrap; }
+}
+@media (max-width: 600px) {
+  :root { --rail: 46px; }
+  .rail { width: var(--rail); padding-top: 15px; }
+  .rail a { width: 38px; }
+  .personal { margin-right: 12px; }
+  .wrap { padding: 12px 8px 36px; }
+  .masthead, .tab-content, .aside-card, #library-page .library-sheet, .record-stream { padding-inline: 12px; }
+  .mast-top { gap: 12px; }
+  .stats { flex-wrap: wrap; gap: 8px 14px; }
+  .library-field { width: 100%; }
+  .library-field input { max-width: 100%; width: 100%; }
+  #library-page .library-table th, #library-page .library-table td { padding-inline: 4px; }
+  #library-page .library-table th:first-child, #library-page .library-table td:first-child { width: 20px; }
+  #library-page .library-table th:nth-child(2), #library-page .library-table td:nth-child(2) { width: 53px; }
+  #records-page .record-row { grid-template-columns: minmax(0,1fr) auto; }
+  #records-page .record-row-result { justify-self: end; }
+  #records-page .record-row-problem, #records-page .record-metrics { grid-column: 1/-1; }
+  #records-page .record-metrics { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  #practice .sample-pair { grid-template-columns: 1fr; }
+  #records-page .record-filter-row { grid-template-columns: 60px minmax(0,1fr); gap: 6px; }
+  #records-page .record-filter-row input[readonly] { grid-column: 2; }
+}

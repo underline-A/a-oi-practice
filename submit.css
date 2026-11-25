@@ -1,0 +1,253 @@
+#practice .mast-actions {
+  align-items: flex-end;
+  padding-left: 7px;
+}
+
+#practice .page-tabs {
+  gap: 16px;
+}
+
+#practice .page-tabs a {
+  padding: 14px 8px 15px;
+  font-size: 16px;
+}
+
+#practice .sample-pair {
+  gap: 8px;
+  align-items: start;
+}
+
+#practice .sample-block {
+  border: 0;
+  background: none;
+}
+
+#practice .sample-head {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: var(--body);
+}
+
+#practice .sample-head strong {
+  padding: 0;
+  color: inherit;
+  border: 0;
+  font-size: inherit;
+}
+
+#practice .sample-copy {
+  padding: 1px 6px;
+  font-size: inherit;
+  line-height: 1.4;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+}
+
+#practice .sample-block pre {
+  padding: 7px 9px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  background: #fafafa;
+  max-width: 100%;
+  overflow-x: auto;
+  color: var(--body);
+  font: 1rem/1.55 var(--mono);
+}
+
+#practice .sample .prose {
+  color: var(--body);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#panel-code .submit-toolbar,
+#panel-code .submit-modes,
+#panel-code .editor-status {
+  display: flex;
+  align-items: center;
+}
+
+#panel-code .submit-toolbar {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+#panel-code .submit-modes button {
+  padding: 6px 13px;
+  border: 1px solid #b9d8eb;
+  background: #fff;
+  color: var(--blue);
+  line-height: 19px;
+}
+
+#panel-code .submit-modes button:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+#panel-code .submit-modes button:last-child {
+  margin-left: -1px;
+  border-radius: 0 3px 3px 0;
+}
+
+#panel-code .submit-modes button[aria-pressed="true"] {
+  background: #3498db;
+  color: #fff;
+  border-color: #3498db;
+}
+
+#panel-code .submit-language {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#panel-code .submit-language span {
+  margin-right: 5px;
+  color: var(--mute);
+  font-weight: 400;
+}
+
+#panel-code .editor-shell {
+  background: #fff;
+  border-color: #d7dadd;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+#panel-code .write-area {
+  height: clamp(320px, 45vh, 620px);
+}
+
+#panel-code .editor-input {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#panel-code .editor-mirror {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  margin: 0;
+  pointer-events: none;
+}
+
+#panel-code #editor-colors,
+#panel-code #code {
+  padding: 13px;
+  font: 14px/23px var(--mono);
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+  tab-size: 4;
+  white-space: pre;
+}
+
+#panel-code #editor-colors {
+  display: block;
+  width: max-content;
+}
+
+#panel-code #gutter {
+  color: #969da3;
+  border-color: #eee;
+  background: #fafafa;
+}
+
+#panel-code #code {
+  position: relative;
+  color: transparent;
+  caret-color: #222;
+}
+
+#panel-code #code::selection {
+  background-color: rgba(64, 145, 232, .28);
+}
+
+@media (forced-colors: active) {
+  #panel-code .editor-mirror { visibility: hidden; }
+  #panel-code #code { color: CanvasText; }
+}
+
+#panel-code #code::placeholder {
+  color: #8b9094;
+}
+
+#panel-code .editor-status {
+  gap: 12px;
+  color: var(--mute);
+  font-size: 13px;
+}
+
+#panel-code #source-file {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 24px 16px;
+  border: 1px dashed #c6cdd0;
+  border-radius: 3px;
+  background: #fafafa;
+}
+
+#panel-code #file-preview {
+  flex-basis: 100%;
+  min-width: 0;
+  overflow: auto;
+  max-height: 45vh;
+  margin: 6px 0 0;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font: 14px/23px var(--mono);
+  tab-size: 4;
+}
+
+.cpp-source {
+  color: #24292e;
+  font: inherit;
+}
+.cpp-source .comment { color: #53804d; }
+.cpp-source :is(.keyword, .directive, .directive-hash) { color: #8a369e; }
+.cpp-source :is(.class-name, .builtin) { color: #096c74; }
+.cpp-source :is(.function, .macro-name) { color: #244da6; }
+.cpp-source :is(.number, .boolean, .constant) { color: #995016; }
+.cpp-source :is(.string, .char, .raw-string) { color: #a43036; }
+.cpp-source :is(.punctuation, .operator) { color: #495564; }
+
+#panel-code #file-name {
+  overflow-wrap: anywhere;
+  color: #555;
+  font-size: 14px;
+}
+
+.solution-paper {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 22px 26px 26px;
+}
+
+.solution-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.solution-heading h1 {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.solution-heading a {
+  flex: none;
+  font-size: 14px;
+}
+
+.solution-empty {
+  color: var(--mute);
+  line-height: 1.6;
+}
