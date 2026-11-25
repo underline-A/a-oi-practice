@@ -158,11 +158,55 @@ function showCase(item, number) {
   caseDialog.showModal();
 }
 
+function showRecordSource(panel, code) {
+  const head = el('div', 'record-code-head');
+  head.append(el('h2', '', '源代码'));
+  panel.append(head);
+  if (typeof code !== 'string') {
+    panel.append(el('p', 'guest-empty', '当前快照未收录这条提交的源代码。'));
+    return;
+  }
+  const copy = el('button', 'outline-button', '复制代码');
+  copy.type = 'button';
+  copy.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      copy.textContent = '已复制';
+    } catch {
+      copy.textContent = '请手动复制';
+    }
+  };
+  head.append(copy);
+  const pre = el('pre', 'record-code-body');
+  const source = el('code', 'cpp-source');
+  function appendTokens(parent, tokens) {
+    for (const token of [].concat(tokens)) {
+      if (typeof token === 'string') {
+        parent.append(token);
+      } else {
+        const span = el('span', 'token ' + token.type);
+        if (token.alias) span.classList.add(...[].concat(token.alias));
+        appendTokens(span, token.content);
+        parent.append(span);
+      }
+    }
+  }
+  try {
+    appendTokens(source, Prism.tokenize(code, Prism.languages.cpp));
+  } catch {
+    source.textContent = code;
+  }
+  pre.append(source);
+  panel.append(pre);
+}
+
 function showRecord(page, r) {
   const p = problemsById.get(r.problemId);
   const card = el('div', 'main-card');
   const evaluation = el('section', 'tab-content');
-  card.append(evaluation);
+  const source = el('section', 'tab-content');
+  source.id = 'record-code';
+  card.append(evaluation, source);
   evaluation.id = 'judge';
   evaluation.append(el('h2', '', '测试点信息'));
   const cases = el('div', 'cases');
@@ -178,7 +222,9 @@ function showRecord(page, r) {
     tile.append(el('span', 'case-usage', Number.isFinite(item.timeMs) ? Math.round(item.timeMs) + 'ms/' + size(item.memoryBytes) : '—'));
     tile.onclick = () => {
       if (action === 'route') return;
-      schedule('case', () => showCase(item, index + 1), navigationDelay);
+      schedule('case', () => {
+        if (!evaluation.hidden) showCase(item, index + 1);
+      }, navigationDelay);
     };
     cases.append(tile);
   });
@@ -194,10 +240,38 @@ function showRecord(page, r) {
   const mast = el('header', 'masthead record-mast');
   const meta = el('div');
   const tabs = el('div', 'record-tabs');
-  const tab = el('button', '', '评测信息');
-  tab.type = 'button';
-  tab.setAttribute('aria-selected','true');
-  tabs.append(tab);
+  tabs.setAttribute('role', 'tablist');
+  tabs.setAttribute('aria-label', '记录详情');
+  const panels = [evaluation, source];
+  function activate(panel) {
+    if (panel === source && !source.hasChildNodes()) showRecordSource(source, r.code);
+    panels.forEach((target, index) => {
+      const selected = target === panel;
+      target.hidden = !selected;
+      tabs.children[index].setAttribute('aria-selected', String(selected));
+      tabs.children[index].tabIndex = selected ? 0 : -1;
+    });
+  }
+  for (const panel of panels) {
+    const tab = el('button', '', panel === evaluation ? '评测信息' : '源代码');
+    tab.type = 'button';
+    tab.id = panel.id + '-tab';
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-controls', panel.id);
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', tab.id);
+    tab.onclick = () => activate(panel);
+    tabs.append(tab);
+  }
+  tabs.onkeydown = event => {
+    const other = event.target === tabs.firstElementChild ? 1 : 0;
+    const index = {ArrowLeft:other, ArrowRight:other, Home:0, End:1}[event.key];
+    if (index === undefined) return;
+    event.preventDefault();
+    activate(panels[index]);
+    tabs.children[index].focus();
+  };
+  activate(evaluation);
   meta.append(fields([
     ['编程语言', r.language], ['代码长度', size(r.bytes)], ['用时', Number.isFinite(r.totalTimeMs) ? Math.round(r.totalTimeMs) + 'ms' : '—'], ['内存', size(r.memoryBytes)]
   ], 'record-facts'), tabs);
