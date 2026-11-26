@@ -410,22 +410,16 @@ function showRecords(params) {
   });
   const {form, count} = filterForm(params, selected, snapshot.problems, route);
   count.textContent = '共计 ' + data.length + ' 条结果';
-  const stream = el('div', 'records-table-wrap record-stream');
+  const sheet = el('div', 'records-table-wrap record-sheet');
+  const stream = el('div', 'record-stream');
   const pages = Math.max(1, Math.ceil(data.length / pageSize));
   const current = Math.min(pages, Math.max(1, Math.trunc(Number(params.get('page'))) || 1));
   for (const record of data.slice((current-1)*pageSize, current*pageSize)) stream.append(recordRow(record));
   if (!data.length) stream.append(el('p','list-empty',params.size ? '没有符合条件的提交记录。' : '还没有提交记录。'));
   const pager = el('nav','records-pages');
-  pager.hidden = pages <= 1;
-  const pageLink = (number, text) => {
-    const dest = new URLSearchParams(params);
-    dest.set('page',number);
-    return link(text,listURL(dest));
-  };
-  if (current > 1) pager.append(pageLink(current-1,'上一页'));
-  pager.append(el('span','',current + ' / ' + pages));
-  if (current < pages) pager.append(pageLink(current+1,'下一页'));
-  byId('records-page').replaceChildren(form,stream,pager);
+  renderRecordPager(pager,current,data.length ? pages : 0,params);
+  sheet.append(stream,pager);
+  byId('records-page').replaceChildren(form,sheet);
 }
 
 function showSolution(p) {

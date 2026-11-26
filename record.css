@@ -243,7 +243,57 @@
   border-bottom: 1.5px solid currentColor;
   transform: rotate(45deg);
 }
+#records-page .record-sheet { padding: 0; }
 #records-page .record-stream { padding: 18px 20px; }
+.records-pages {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  background: #ffffffaa;
+  color: #333;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.record-page-count { margin-right: 8px; white-space: nowrap; }
+.record-page-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 24px;
+  height: 26px;
+  padding: 0 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background: #fff;
+  color: #333;
+  line-height: 1;
+}
+a.record-page-control:hover, a.record-page-control:focus-visible {
+  border-color: #3498db;
+  color: #1976b5;
+  text-decoration: none;
+}
+.record-page-control[aria-current] {
+  background: #3498db;
+  border-color: #3498db;
+  color: #fff;
+  font-weight: 700;
+}
+.record-page-control[aria-disabled] { color: #aaa; border-color: #ddd; }
+.record-page-control i {
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: translateX(-2px) rotate(45deg);
+}
+.record-page-control[data-direction=left] i { transform: translateX(2px) rotate(-135deg); }
+.record-page-control i + i { margin-left: -3px; }
 .record-row {
   display: grid;
   grid-template-columns: 155px 135px minmax(145px, 1fr) 236px;

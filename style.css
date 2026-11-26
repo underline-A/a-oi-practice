@@ -197,7 +197,7 @@ body:has(#workbench[aria-busy]) .top::after {
 .records-table-wrap,.library-sheet{overflow-x:auto}.records-table,.library-table{width:100%;border-collapse:collapse;font-size:15px;text-align:left}
 .records-table th,.library-table th{background:#f4f6f8;color:#3c4248;font-weight:650}.records-table td,.records-table th,.library-table td,.library-table th{padding:11px 10px;border-bottom:1px solid var(--line)}
 .records-table td:nth-last-child(-n+3){white-space:nowrap}.library-table td:nth-child(-n+2){width:16%}.records-table tr:hover td,.library-table tr:hover td{background:#f3f8fa}
-.records-pages{display:flex;align-items:center;gap:14px;justify-content:flex-end;padding:14px 2px}.library-state{font-size:14px;color:var(--mute)}.library-state.is-solved{color:#39992d}
+.library-state{font-size:14px;color:var(--mute)}.library-state.is-solved{color:#39992d}
 .record-columns .detail-side .text-link{margin-top:8px}.notice,.loading{background:var(--paper)}
 @media(max-width:980px){.wrap{padding-inline:14px}.stats,.record-facts{gap:13px}.columns{grid-template-columns:minmax(0,1.8fr) minmax(235px,1fr)}.record-facts{margin-left:28%}}
 @media(max-width:720px){:root{--rail:48px}.mast-top{flex-wrap:wrap;gap:6px}.columns{grid-template-columns:minmax(0,1fr)}.record-facts{margin:0;justify-content:flex-start;flex-wrap:wrap}.records-filter{flex-wrap:wrap}.wrap{padding-inline:9px}.tab-content,.aside-card{padding:16px}.rail a{width:40px}.personal{margin-right:8px}}
