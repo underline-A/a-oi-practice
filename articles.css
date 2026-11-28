@@ -208,6 +208,16 @@
 }
 
 @media (max-width: 760px) {
+  body:has(.oj-articles-view:not([hidden])) .breadcrumbs {
+    flex: 1;
+    min-width: 0;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  body:has(.oj-articles-view:not([hidden])) .breadcrumbs [aria-current] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .oj-article-banner { padding: 22px 0 16px; }
   .oj-article-layout {
     grid-template-columns: minmax(0, 1fr);
