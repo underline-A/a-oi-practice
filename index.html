@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./home.css">
   <link rel="stylesheet" href="./library.css">
+  <link rel="stylesheet" href="./articles.css">
   <link rel="stylesheet" href="./submit.css">
   <link rel="stylesheet" href="./record.css">
   <link rel="stylesheet" href="./visitor.css">
@@ -19,6 +20,7 @@
   <script defer src="./vendor/purify.min.js"></script>
   <script defer data-manual src="./vendor/prism-cpp.min.js"></script>
   <script defer src="./typeset.js"></script>
+  <script defer src="./articles.js"></script>
   <script defer src="./library.js"></script>
   <script defer src="./record-pager.js"></script>
   <script defer src="./visitor.js"></script>
@@ -42,14 +44,16 @@
     <a href="#home" aria-label="首页"><i class="glyph house" aria-hidden="true"></i><span>首页</span></a>
     <a href="#library" aria-label="题库"><i class="glyph book" aria-hidden="true"></i><span>题库</span></a>
     <a href="#records" aria-label="评测记录"><i class="glyph chart" aria-hidden="true"></i><span>评测记录</span></a>
+    <a href="#articles" aria-label="文章广场" title="文章广场"><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5v13a3 3 0 0 0 3 3h13a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v13a3 3 0 0 1-.9 2.1"/><path d="M9.5 7h4v4h-4zM16 7h2M16 10h2M9.5 14h8.5M9.5 17h6"/></svg><span>文章广场</span></a>
   </nav>
   <div class="workspace"><main class="wrap" id="workbench">
-    <noscript><p class="notice">请启用 JavaScript 以浏览题库和评测记录。</p></noscript>
+    <noscript><p class="notice">请启用 JavaScript 以浏览题库、评测记录和文章广场。</p></noscript>
     <p id="notice" role="status" class="loading">正在读取…</p>
     <section id="home-page" hidden>
       <h1 class="home-quote"><span>假如我不去摘星的话，</span><span>我怎么能知道自己能靠得多近？</span></h1>
     </section>
     <section id="library-page" hidden aria-label="题库"></section>
+    <section id="articles-page" hidden aria-label="文章广场"></section>
     <section id="records-page" hidden aria-label="评测记录"></section>
     <section id="practice" hidden aria-label="题目详情">
       <header class="masthead">

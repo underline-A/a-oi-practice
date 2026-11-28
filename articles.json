@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1025-tricks",
+    "title": "不学习会导致灵魂残缺的1025个trick",
+    "author": "___A__",
+    "publishedAt": "2026-11-28T22:09:00+08:00",
+    "category": "算法 · 理论",
+    "summary": "从环上的 gcd 连通块，到整桶吞并和块内 RMQ。按方法回看发现它的那道题。",
+    "markdownFile": "1025-tricks.md"
+  }
+]

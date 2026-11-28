@@ -447,9 +447,9 @@ function schedule(kind, work, delay) {
   clearTimeout(delayTimer);
   action = kind;
   workbench.setAttribute('aria-busy','true');
-  const commit = () => {
+  const commit = async () => {
     if (stamp !== generation || location.hash !== requestedHash) return;
-    try { work(); }
+    try { await work(stamp); }
     finally {
       if (stamp === generation) {
         workbench.removeAttribute('aria-busy');
@@ -461,7 +461,7 @@ function schedule(kind, work, delay) {
   else commit();
 }
 
-function renderRoute(hash) {
+async function renderRoute(hash, stamp) {
   const [path, search] = hash.slice(1).split('?');
   const params = new URLSearchParams(search);
   const [name, subpage, ...extra] = (path || 'home').split('/');
@@ -482,6 +482,21 @@ function renderRoute(hash) {
       byId('tab-statement').href = problemHref(p.id);
       byId('history-button').href = related(p);
       byId('show-review').href = problemHref(p.id) + '/solution';
+    }
+  } else if (name === 'articles' && !extra.length) {
+    active = 'articles';
+    try {
+      const articles = await OJArticles.load(subpage);
+      if (generation !== stamp || hash !== location.hash) return;
+      title = OJArticles.render(byId('articles-page'), articles, subpage);
+      dest = 'articles-page';
+      crumbs = subpage ? [['文章广场','#articles'],[title]] : [[title]];
+    } catch (error) {
+      if (generation !== stamp || hash !== location.hash) return;
+      title = error.message || '暂时无法读取文章';
+      crumbs = [['文章广场','#articles'],[title]];
+      notice.className = 'main-card guest-err';
+      notice.replaceChildren(el('h1','',title),link('返回文章广场','#articles'));
     }
   } else if (record && !extra.length) {
     active = 'records';
@@ -517,9 +532,10 @@ function route() {
   const hash = location.hash;
   const dwell = hasRouted || (hash && hash !== '#home') ? navigationDelay : 0;
   hasRouted = true;
+  OJArticles.dispose();
   if (caseDialog.open) caseDialog.close();
   byId('personal-menu').open = false;
-  schedule('route', () => renderRoute(hash), dwell);
+  schedule('route', stamp => renderRoute(hash, stamp), dwell);
 }
 
 caseDialog.addEventListener('click', event => {
